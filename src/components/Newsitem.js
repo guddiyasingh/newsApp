@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 
 export class Newsitem extends Component {
-constructor(){
-  super();
-  console.log('Hello I am a construcor')
-}
+
   render() {
    let {title,description,imageUrl} = this.props;
     return (
@@ -14,7 +11,7 @@ constructor(){
             <div className="card-body">
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
-              <a href="/" className="btn btn-sm btn-primary">Read More</a>
+              <a href="/newsUrl/" className="btn btn-sm btn-primary">Read More</a>
             </div>
         </div>
       </div>
