@@ -110,9 +110,8 @@ export class News extends Component {
       <div className='row'>
       {this.state.articles.map((element)=>{
         return <div className='col-md-4'>
-          <Newsitem key={element.url}title="myTitle" description='mydesc'
-            imageUrl="https://cdn.vox-cdn.com/thumbor/8k7JPu5PSipDoLQ5SJhtTvOxiYQ=/0x0:2040x1362/1200x628/filters:focal(1020x681:1021x682)/cdn.vox-cdn.com/uploads/chorus_asset/file/25825968/Installer_66.png"
-            newsUrl="todo" />
+          <Newsitem key={element.url}title={element.title.slice(0,45)} description={element.description.slice(0,88)}
+            imageUrl={element.urlToImage} newsUrl={element.url}/>
         </div>
   })}
    </div>
