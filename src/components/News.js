@@ -97,13 +97,23 @@ export class News extends Component {
   ]
   constructor() {
     super();
-    console.log('Hello I am a construcor');
     this.state = {
       articles: this.articles,
       loading:false 
     }
+
+  }
+
+  async componentDidMount(){
+   console.log("cdm")
+    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a472465cf0ab48bd9c896feb59d00e82"
+    let data = await fetch(url);
+    let parsedData = await data.json()
+    console.log(parsedData);
+    this.setState({articles: parsedData.articles})
   }
   render() {
+    console.log("render")
     return (
       <div className='container my-3'>
       <h2>NewsMonky - Top Headlines</h2> 
