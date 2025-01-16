@@ -15,7 +15,7 @@ export class News extends Component {
 
   async componentDidMount(){
    console.log("cdm")
-    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a472465cf0ab48bd9c896feb59d00e82"
+    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a472465cf0ab48bd9c896feb59d00e82&page1";
     let data = await fetch(url);
     let parsedData = await data.json()
     console.log(parsedData);
@@ -34,9 +34,10 @@ export class News extends Component {
         </div>
   })}
    </div>
-   <div className='conatainer'>
-          <button type="button" class="btn btn-dark">Previous</button>
-          <button type="button" class="btn btn-dark">Next</button>
+        <div className='conatainer d-flex justify-content-between'>
+ 
+          <button type="button" class="btn btn-dark">&larr; Previous</button>
+          <button type="button" class="btn btn-dark">Next &larr;</button>
 
    </div>
     </div>
