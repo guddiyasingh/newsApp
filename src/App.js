@@ -11,8 +11,8 @@ export default class App extends Component {
   render() {
     return (
       <div >
-        <Navbar title="myTitle" description="mydesc"/>
-       <News pageSize={5} country="us"/>
+        <Navbar/>
+       <News pageSize={5} country="us" category="sports"/>
       </div>
     )
   }
