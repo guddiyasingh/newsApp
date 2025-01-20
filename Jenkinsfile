@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = '22.x' // Specify the Node.js version to use
+        NODE_VERSION = 'NodeJS22' // Specify the Node.js version to use
         APP_NAME = 'react-app'
     }
 
