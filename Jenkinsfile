@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs "NodeJS_Latest" // Ensure this matches the configured Node.js version
+        nodejs "22" // Ensure this matches the configured Node.js version
     }
     environment {
         CI = 'true' // React's production build requirement
