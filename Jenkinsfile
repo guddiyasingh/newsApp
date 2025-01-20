@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = '18.x' // Specify the Node.js version to use
+        NODE_VERSION = '22.x' // Specify the Node.js version to use
         APP_NAME = 'react-app'
     }
 
@@ -14,15 +14,7 @@ pipeline {
             }
         }
 
-        stage('Set Up Node.js') {
-            steps {
-                echo 'Setting up Node.js...'
-                script {
-                    def nodeTool = tool name: "NodeJS ${NODE_VERSION}", type: 'NodeJSInstallation'
-                    env.PATH = "${nodeTool}/bin:${env.PATH}"
-                }
-            }
-        }
+        
 
         stage('Install Dependencies') {
             steps {
