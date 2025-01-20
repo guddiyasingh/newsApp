@@ -1,51 +1,76 @@
 pipeline {
     agent any
-    tools {
-        nodejs "22" // Ensure this matches the configured Node.js version
-    }
+
     environment {
-        CI = 'true' // React's production build requirement
+        NODE_VERSION = '18.x' // Specify the Node.js version to use
+        APP_NAME = 'react-app'
     }
+
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                // Clone the repository
+                echo 'Checking out code from Git repository...'
                 checkout scm
             }
         }
+
+        stage('Set Up Node.js') {
+            steps {
+                echo 'Setting up Node.js...'
+                script {
+                    def nodeTool = tool name: "NodeJS ${NODE_VERSION}", type: 'NodeJSInstallation'
+                    env.PATH = "${nodeTool}/bin:${env.PATH}"
+                }
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                // Install npm/yarn dependencies
+                echo 'Installing dependencies...'
                 sh 'npm install'
             }
         }
-        stage('Build') {
+
+        stage('Run Tests') {
             steps {
-                // Build the React app
+                echo 'Running tests...'
+                sh 'npm test -- --watchAll=false'
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                echo 'Building the React application...'
                 sh 'npm run build'
             }
         }
-        stage('Test') {
+
+        stage('Archive Build Artifacts') {
             steps {
-                // Run tests
-                sh 'npm test'
+                echo 'Archiving build artifacts...'
+                archiveArtifacts artifacts: 'build/**', fingerprint: true
             }
         }
+
         stage('Deploy') {
             steps {
-                // Deploy the app (customize this based on your deployment method)
-                // Example: Copy build files to a web server
-                sh 'cp -r build/* /var/www/news-app'
+                echo 'Deploying application...'
+                sh '''
+                    # Define your deployment steps here
+                    # Example: Copy build to /var/www/html
+                    sudo cp -r build/* /var/www/news-app/
+                '''
             }
         }
     }
+
     post {
         always {
-            // Archive build artifacts
-            archiveArtifacts artifacts: 'build/**', fingerprint: true
+            echo 'Cleaning up workspace...'
+            cleanWs()
         }
         success {
-            echo 'Build and deployment succeeded!'
+            echo 'Build and deployment successful!'
         }
         failure {
             echo 'Build or deployment failed!'
