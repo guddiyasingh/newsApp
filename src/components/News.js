@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Newsitem from './Newsitem'
 import Spinner from './Spinner';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 
 export class News extends Component {
