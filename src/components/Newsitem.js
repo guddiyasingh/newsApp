@@ -9,7 +9,7 @@ export class Newsitem extends Component {
         <div className="card" >
           <img src={imageUrl} className="card-img-top" alt="..."/>
             <div className="card-body">
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             style={{left:'90',zIndex:"1"}}>
               {source}
             </span>
