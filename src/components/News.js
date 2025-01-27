@@ -88,7 +88,7 @@ export class News extends Component {
   //  this.updateNews()
   }
   render() {
-    console.log("render")
+    console.log("render check")
     return (
       <div className='container my-3'>
         <h1 className='text-center' style={{margin:"40px 0px"}}>NewsMonky - Top Headlines</h1>
@@ -99,6 +99,7 @@ export class News extends Component {
           <Newsitem title={element.title?element.title:""} description={element.description?element.description:""}
             imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} 
              source={element.source.name}/>
+
         </div>
        
       })}
