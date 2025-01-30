@@ -40,7 +40,7 @@ export class News extends Component {
    this.props.setProgress(10)
     // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&
     // apiKey=a472465cf0ab48bd9c896feb59d00e82&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a472465cf0ab48bd9c896feb59d00e82&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     
     let data = await fetch(url);
     this.props.setProgress(30)
