@@ -70,7 +70,7 @@ export class News extends Component {
   fetchMoreData = async() => {
     
     this.setState({page: this.state.page + 1})
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a472465cf0ab48bd9c896feb59d00e82&page=1&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`;
    
     let data = await fetch(url);
     let parsedData = await data.json()
@@ -87,7 +87,7 @@ export class News extends Component {
     console.log("render check")
     return (
       <>
-        <h1 className='text-center' style={{margin:"40px 0px"}}>NewsMonkey - Top  {this.capitalizeFirstLetter(this.props.category)}  Headlines </h1>
+        <h1 className='text-center' style={{margin:"40px 0px" , marginTop:"90px"}}>NewsMonkey - Top  {this.capitalizeFirstLetter(this.props.category)}  Headlines </h1>
         {this.state.loading && <Spinner/>}
         <InfiniteScroll
           dataLength={this.state.articles.length}
